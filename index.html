@@ -110,12 +110,16 @@
   }
   .nav-links a:hover::after{width:100%;}
   .nav-cta{
-    font-size:12px; padding:10px 20px; border:1px solid transparent;
-    border-radius:100px; letter-spacing:0.05em;
-    background:var(--white); color:var(--black); font-weight:700;
+    font-size:12px; padding:9px 19px; border-radius:100px; letter-spacing:0.05em;
+    color:var(--black); font-weight:700;
+    border:2px solid transparent;
+    background-image:linear-gradient(var(--white), var(--white)), var(--holo-grad);
+    background-origin:border-box;
+    background-clip:padding-box, border-box;
+    box-shadow:0 0 16px -6px rgba(185,142,255,0.5);
     transition:transform .25s ease, box-shadow .25s ease;
   }
-  .nav-cta:hover, .nav-cta:focus-visible{transform:translateY(-2px); box-shadow:0 12px 30px -8px rgba(185,142,255,0.5);}
+  .nav-cta:hover, .nav-cta:focus-visible{transform:translateY(-2px); box-shadow:0 0 22px -4px rgba(185,142,255,0.6);}
   .nav-right{display:flex; align-items:center; gap:18px;}
   .nav-toggle-checkbox{display:none;}
   .burger{
@@ -138,9 +142,7 @@
     border-bottom:1px solid var(--line);
   }
   .nav-mobile-panel a.nav-cta{
-    border:1px solid transparent; border-radius:100px; color:var(--black);
-    background:var(--white); font-weight:700;
-    text-align:center; margin-top:16px;
+    display:block; text-align:center; margin-top:16px;
   }
   .nav-mobile-panel a:hover, .nav-mobile-panel a:focus-visible{color:var(--white);}
 
@@ -201,17 +203,45 @@
   .hero-sub strong{color:var(--white); font-weight:500;}
 
   .hero-ctas{display:flex; gap:16px; margin-top:44px; flex-wrap:wrap;}
-  .btn-primary, .btn-ghost{
+
+  /* tier 1: 通常の主CTA（白ピル、装飾なし） */
+  .btn-primary{
     font-size:14px; letter-spacing:0.04em; padding:16px 30px; border-radius:100px;
     display:inline-flex; align-items:center; gap:8px;
-    transition:transform .25s ease, box-shadow .25s ease, background .25s ease, color .25s ease;
     background:var(--white); color:var(--black); font-weight:700; border:1px solid transparent;
+    transition:transform .25s ease, box-shadow .25s ease;
   }
-  .btn-primary:hover, .btn-primary:focus-visible,
-  .btn-ghost:hover, .btn-ghost:focus-visible{
+  .btn-primary:hover, .btn-primary:focus-visible{
     transform:translateY(-2px);
     box-shadow:0 12px 30px -8px rgba(185,142,255,0.5);
   }
+
+  /* tier 0: 予約＝コンバージョン直結CTA（ホログラデーションの縁取り＋常時発光） */
+  .btn-book{
+    font-size:14px; letter-spacing:0.04em; padding:15px 29px; border-radius:100px;
+    display:inline-flex; align-items:center; gap:8px;
+    font-weight:700; color:var(--black);
+    border:2px solid transparent;
+    background-image:linear-gradient(var(--white), var(--white)), var(--holo-grad);
+    background-origin:border-box;
+    background-clip:padding-box, border-box;
+    box-shadow:0 0 22px -6px rgba(185,142,255,0.55);
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .btn-book:hover, .btn-book:focus-visible{
+    transform:translateY(-2px);
+    box-shadow:0 0 30px -4px rgba(185,142,255,0.65), 0 0 48px -8px rgba(110,231,245,0.4);
+  }
+
+  /* tier 2: SNS等の副次リンク（控えめなテキスト＋アイコン） */
+  .btn-social{
+    display:inline-flex; align-items:center; gap:8px;
+    font-size:13px; letter-spacing:0.03em; color:var(--sub);
+    padding:8px 2px; border-bottom:1px solid transparent;
+    transition:color .25s ease, border-color .25s ease;
+  }
+  .btn-social svg{width:16px; height:16px; flex-shrink:0; display:block;}
+  .btn-social:hover, .btn-social:focus-visible{color:var(--white); border-color:var(--line);}
 
   /* marquee */
   .marquee-wrap{
@@ -518,7 +548,7 @@
   .info-contact-row .ic{width:6px; height:6px; border-radius:50%; background:var(--holo-grad); flex-shrink:0;}
 
   .plan-note{
-    margin-top:28px; font-size:12.5px; color:var(--sub-dim); text-align:right;
+    margin-top:28px; font-size:12.5px; color:var(--sub); text-align:right;
   }
 
   /* ---------- curriculum / program ---------- */
@@ -589,8 +619,12 @@
   .route-row{font-family:'JetBrains Mono', monospace; font-size:13px; color:var(--white); margin-bottom:8px;}
   .route-note{font-size:12.5px; color:var(--sub); line-height:1.6;}
 
+  /* ---------- curriculum ---------- */
+  .curriculum{background:var(--panel); border-top:1px solid var(--line);}
+
   /* ---------- trainees / results ---------- */
-  .results{background:var(--panel); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .results{background:var(--panel);}
+  #instructor{border-bottom:1px solid var(--line);}
   .results-grid{
     display:grid; grid-template-columns:repeat(3, 1fr); gap:1px;
     background:var(--line); border-radius:20px; overflow:hidden; border:1px solid var(--line);
@@ -666,6 +700,7 @@
   }
   .contact p{color:var(--sub); font-size:15px; max-width:460px; margin:0 auto 44px;}
   .contact-btns{display:flex; gap:18px; justify-content:center; flex-wrap:wrap;}
+  .contact-social{display:flex; gap:32px; justify-content:center; flex-wrap:wrap; margin-top:28px;}
 
   /* ---------- footer ---------- */
   footer{
@@ -684,6 +719,7 @@
   }
 
   /* ---------- rental studio ---------- */
+  #rental{background:var(--panel); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
   .rental-photo{
     border-radius:24px; overflow:hidden; border:1px solid var(--line);
     margin-bottom:24px; background:#0c0c0e;
@@ -710,13 +746,8 @@
     display:flex; flex-direction:column; gap:14px;
     min-width:0;
   }
-  .sendai-head{display:flex; align-items:center; gap:14px;}
-  .sendai-icon{
-    width:44px; height:44px; border-radius:50%; border:1px solid var(--holo-b);
-    display:flex; align-items:center; justify-content:center; color:var(--holo-b);
-    flex-shrink:0;
-  }
-  .sendai-icon svg{width:20px; height:20px; display:block;}
+  .sendai-head{display:flex; align-items:center; gap:9px;}
+  .sendai-head .chip{width:9px; height:9px; border-radius:2px; background:var(--holo-grad); flex-shrink:0;}
   .sendai-card .sendai-title{font-family:'Unbounded', sans-serif; font-weight:700; font-size:16px;}
   .sendai-desc{font-size:12.5px; color:var(--sub); line-height:1.8;}
   .sendai-footer{
@@ -1436,7 +1467,7 @@
         <span>ミーティング・セミナー</span>
       </div>
 
-      <a href="https://nalstudio.stores.jp/reserve/nalstudio/4848233#pageContent" target="_blank" rel="noopener" class="btn-ghost">レンタルスタジオを予約する</a>
+      <a href="https://nalstudio.stores.jp/reserve/nalstudio/4848233#pageContent" target="_blank" rel="noopener" class="btn-book">レンタルスタジオを予約する</a>
     </div>
   </section>
 
@@ -1459,27 +1490,21 @@
       <div class="sendai-grid">
         <div class="sendai-card">
           <div class="sendai-head">
-            <div class="sendai-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 18h16l-1.2-8-4.3 3.2L12 8l-2.5 5.2L5.2 10 4 18z"/><path d="M4 20.5h16"/></svg>
-            </div>
+            <span class="chip"></span>
             <h3 class="sendai-title">NAL TRAINEE SENDAI</h3>
           </div>
           <div class="sendai-desc">選抜制アイドル育成プログラム。ダンス・ボーカル・表現力など、デビューを目指す方を全力でサポートします。</div>
         </div>
         <div class="sendai-card">
           <div class="sendai-head">
-            <div class="sendai-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6.3 6.3l2.5 2.5M15.2 15.2l2.5 2.5M17.7 6.3l-2.5 2.5M8.8 15.2l-2.5 2.5"/></svg>
-            </div>
+            <span class="chip"></span>
             <h3 class="sendai-title">WORKSHOP</h3>
           </div>
           <div class="sendai-desc">NAL講師によるスペシャルワークショップを定期的に開催します。</div>
         </div>
         <div class="sendai-card">
           <div class="sendai-head">
-            <div class="sendai-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M12 3l2.6 5.9L21 9.6l-4.7 4.2L17.6 21 12 17.6 6.4 21l1.3-7.2L3 9.6l6.4-.7L12 3z"/></svg>
-            </div>
+            <span class="chip"></span>
             <h3 class="sendai-title">AUDITION</h3>
           </div>
           <div class="sendai-desc">韓国芸能事務所・プロダクション等からの依頼に応じたオーディションの開催・サポートを行います。</div>
@@ -1488,7 +1513,10 @@
 
       <div class="sendai-footer">
         <p class="sendai-footer-note">夢を持つ人の「挑戦できる場所」を創っていきます。</p>
-        <a href="https://www.instagram.com/nalstudio_sendai/" target="_blank" rel="noopener" class="btn-ghost">instagram@nalstudio_sendai</a>
+        <a href="https://www.instagram.com/nalstudio_sendai/" target="_blank" rel="noopener" class="btn-social">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1" fill="currentColor" stroke="none"/></svg>
+          instagram@nalstudio_sendai
+        </a>
       </div>
     </div>
   </section>
@@ -1501,9 +1529,17 @@
       <h2>一緒に、夢を<br><span class="holo-text">カタチ</span>にしていきましょう。</h2>
       <p>体験レッスン・レンタルスタジオのご予約はWEB予約サイトより承っております。ご不明点はInstagramまたは公式LINEまで。</p>
       <div class="contact-btns">
-        <a href="https://nalstudio.stores.jp/reserve/nalstudio/booking_pages" target="_blank" rel="noopener" class="btn-primary">WEBで予約する</a>
-        <a href="https://www.instagram.com/nalstudio_tokyo" target="_blank" rel="noopener" class="btn-ghost">Instagram @nalstudio_tokyo</a>
-        <a href="https://line.me/R/ti/p/@nalstudio_tokyo" target="_blank" rel="noopener" class="btn-ghost">公式LINEを追加</a>
+        <a href="https://nalstudio.stores.jp/reserve/nalstudio/booking_pages" target="_blank" rel="noopener" class="btn-book">WEBで予約する</a>
+      </div>
+      <div class="contact-social">
+        <a href="https://www.instagram.com/nalstudio_tokyo" target="_blank" rel="noopener" class="btn-social">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1" fill="currentColor" stroke="none"/></svg>
+          Instagram @nalstudio_tokyo
+        </a>
+        <a href="https://line.me/R/ti/p/@nalstudio_tokyo" target="_blank" rel="noopener" class="btn-social">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M21 11.5c0 4.7-4.5 8.5-9.5 8.5-1 0-2-.1-2.9-.4L4 21l1.1-3.8C3.8 15.8 3 13.7 3 11.5 3 6.8 7.5 3 12.5 3S21 6.8 21 11.5z"/></svg>
+          公式LINEを追加
+        </a>
       </div>
     </div>
   </section>
