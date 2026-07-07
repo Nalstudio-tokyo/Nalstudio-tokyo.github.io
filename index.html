@@ -684,6 +684,19 @@
     display:flex; justify-content:space-between; color:var(--sub-dim); font-size:12px; flex-wrap:wrap; gap:10px;
   }
 
+  /* ---------- rental studio ---------- */
+  .rental-photo{
+    border-radius:24px; overflow:hidden; border:1px solid var(--line);
+    margin-bottom:24px; background:#0c0c0e;
+  }
+  .rental-photo img{
+    width:100%; height:auto; aspect-ratio:21/9; object-fit:cover; object-position:center 60%;
+    display:block;
+  }
+  @media (max-width:700px){
+    .rental-photo img{aspect-ratio:4/3;}
+  }
+
   /* ---------- sendai project ---------- */
   .sendai-lead{
     font-family:'Unbounded', sans-serif; font-weight:700;
@@ -1398,6 +1411,10 @@
           <h2 class="sec-title">レンタル<br>スタジオ</h2>
         </div>
         <div class="sec-desc">ダンス練習・リハーサル・撮影はもちろん、ヨガ・ピラティスからミーティングまで。用途に合わせて幅広くご活用いただけるレンタルスタジオです。</div>
+      </div>
+
+      <div class="rental-photo">
+        <img src="images/rental-studio.jpg" alt="NAL STUDIO レンタルスタジオ内観 — 大型ミラーと音響設備を備えたダンススタジオ" width="1280" height="960" loading="lazy" decoding="async">
       </div>
 
       <div class="dual-panel" style="margin-bottom:24px;">
