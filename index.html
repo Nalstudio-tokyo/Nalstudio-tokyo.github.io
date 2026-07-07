@@ -110,11 +110,12 @@
   }
   .nav-links a:hover::after{width:100%;}
   .nav-cta{
-    font-size:12px; padding:10px 20px; border:1px solid var(--white);
+    font-size:12px; padding:10px 20px; border:1px solid transparent;
     border-radius:100px; letter-spacing:0.05em;
-    transition:background .25s ease, color .25s ease;
+    background:var(--white); color:var(--black); font-weight:700;
+    transition:transform .25s ease, box-shadow .25s ease;
   }
-  .nav-cta:hover, .nav-cta:focus-visible{background:var(--white); color:var(--black);}
+  .nav-cta:hover, .nav-cta:focus-visible{transform:translateY(-2px); box-shadow:0 12px 30px -8px rgba(185,142,255,0.5);}
   .nav-right{display:flex; align-items:center; gap:18px;}
   .nav-toggle-checkbox{display:none;}
   .burger{
@@ -137,7 +138,8 @@
     border-bottom:1px solid var(--line);
   }
   .nav-mobile-panel a.nav-cta{
-    border:1px solid var(--white); border-radius:100px; color:var(--white);
+    border:1px solid transparent; border-radius:100px; color:var(--black);
+    background:var(--white); font-weight:700;
     text-align:center; margin-top:16px;
   }
   .nav-mobile-panel a:hover, .nav-mobile-panel a:focus-visible{color:var(--white);}
@@ -203,16 +205,13 @@
     font-size:14px; letter-spacing:0.04em; padding:16px 30px; border-radius:100px;
     display:inline-flex; align-items:center; gap:8px;
     transition:transform .25s ease, box-shadow .25s ease, background .25s ease, color .25s ease;
+    background:var(--white); color:var(--black); font-weight:700; border:1px solid transparent;
   }
-  .btn-primary{
-    background:var(--white); color:var(--black); font-weight:700;
-  }
-  .btn-primary:hover, .btn-primary:focus-visible{
+  .btn-primary:hover, .btn-primary:focus-visible,
+  .btn-ghost:hover, .btn-ghost:focus-visible{
     transform:translateY(-2px);
     box-shadow:0 12px 30px -8px rgba(185,142,255,0.5);
   }
-  .btn-ghost{border:1px solid var(--line); color:var(--white);}
-  .btn-ghost:hover, .btn-ghost:focus-visible{border-color:var(--white); transform:translateY(-2px);}
 
   /* marquee */
   .marquee-wrap{
@@ -859,7 +858,7 @@
         初心者からアイドル・ダンサー志望まで、一人ひとりに合わせた本気の指導を。
       </p>
       <div class="hero-ctas">
-        <a href="#classes" class="btn-primary">料金・クラスを見る →</a>
+        <a href="#classes" class="btn-primary">料金・クラスを見る</a>
         <a href="#about" class="btn-ghost">SEUNのプロフィール</a>
       </div>
     </div>
@@ -1438,7 +1437,7 @@
         <span>ミーティング・セミナー</span>
       </div>
 
-      <a href="https://nalstudio.stores.jp/reserve/nalstudio/4848233#pageContent" target="_blank" rel="noopener" class="btn-ghost">レンタルスタジオを予約する →</a>
+      <a href="https://nalstudio.stores.jp/reserve/nalstudio/4848233#pageContent" target="_blank" rel="noopener" class="btn-ghost">レンタルスタジオを予約する</a>
     </div>
   </section>
 
@@ -1500,7 +1499,7 @@
       <h2>一緒に、夢を<br><span class="holo-text">カタチ</span>にしていきましょう。</h2>
       <p>体験レッスン・レンタルスタジオのご予約はWEB予約サイトより承っております。ご不明点はInstagramまたは公式LINEまで。</p>
       <div class="contact-btns">
-        <a href="https://nalstudio.stores.jp/reserve/nalstudio/booking_pages" target="_blank" rel="noopener" class="btn-primary">WEBで予約する →</a>
+        <a href="https://nalstudio.stores.jp/reserve/nalstudio/booking_pages" target="_blank" rel="noopener" class="btn-primary">WEBで予約する</a>
         <a href="https://www.instagram.com/nalstudio_tokyo" target="_blank" rel="noopener" class="btn-ghost">Instagram @nalstudio_tokyo</a>
         <a href="https://line.me/R/ti/p/@nalstudio_tokyo" target="_blank" rel="noopener" class="btn-ghost">公式LINEを追加</a>
       </div>
