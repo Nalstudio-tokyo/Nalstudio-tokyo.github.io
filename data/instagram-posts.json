@@ -1,0 +1,47 @@
+{
+  "updated_at": "2026-07-20T00:00:00+00:00",
+  "posts": [
+    {
+      "id": "sample1",
+      "caption": "本日のK-POPクラスの様子です。",
+      "permalink": "https://www.instagram.com/nalstudio_tokyo/",
+      "image": "images/instructor-hayataro.jpg",
+      "timestamp": "2026-07-18T12:00:00+0000"
+    },
+    {
+      "id": "sample2",
+      "caption": "体験レッスン受付中です。",
+      "permalink": "https://www.instagram.com/nalstudio_tokyo/",
+      "image": "images/instructor-rina.jpg",
+      "timestamp": "2026-07-16T12:00:00+0000"
+    },
+    {
+      "id": "sample3",
+      "caption": "新宿スタジオの様子。",
+      "permalink": "https://www.instagram.com/nalstudio_tokyo/",
+      "image": "images/instructor-togashi.jpg",
+      "timestamp": "2026-07-14T12:00:00+0000"
+    },
+    {
+      "id": "sample4",
+      "caption": "レンタルスタジオもご利用いただけます。",
+      "permalink": "https://www.instagram.com/nalstudio_tokyo/",
+      "image": "images/rental-studio.jpg",
+      "timestamp": "2026-07-12T12:00:00+0000"
+    },
+    {
+      "id": "sample5",
+      "caption": "代表SEUNのレッスン風景。",
+      "permalink": "https://www.instagram.com/nalstudio_tokyo/",
+      "image": "images/profile-seun.jpg",
+      "timestamp": "2026-07-10T12:00:00+0000"
+    },
+    {
+      "id": "sample6",
+      "caption": "体験レッスンのご予約はこちらから。",
+      "permalink": "https://www.instagram.com/nalstudio_tokyo/",
+      "image": "images/logo.png",
+      "timestamp": "2026-07-08T12:00:00+0000"
+    }
+  ]
+}

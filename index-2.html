@@ -304,6 +304,24 @@
   }
   .sec-desc{max-width:360px; color:var(--sub); font-size:14px; line-height:1.85;}
 
+  /* ---------- instagram feed ---------- */
+  .ig-grid{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:16px;
+  }
+  .ig-card{
+    position:relative; display:block; aspect-ratio:1/1; overflow:hidden; border-radius:12px;
+    background:var(--panel-2); border:1px solid var(--line);
+  }
+  .ig-card img{width:100%; height:100%; object-fit:cover; display:block; transition:transform .4s ease;}
+  .ig-card:hover img{transform:scale(1.06);}
+  .ig-card-overlay{
+    position:absolute; inset:0; display:flex; align-items:flex-end; padding:14px;
+    background:linear-gradient(to top, rgba(8,8,10,0.85), rgba(8,8,10,0) 60%);
+    opacity:0; transition:opacity .3s ease;
+  }
+  .ig-card:hover .ig-card-overlay{opacity:1;}
+  .ig-card-caption{color:var(--white); font-size:12.5px; line-height:1.5;}
+
   /* ---------- studio intro ---------- */
   .studio-intro{max-width:620px;}
   .studio-intro-text{font-size:14.5px; line-height:2; color:var(--sub); max-width:460px;}
@@ -790,6 +808,7 @@
     .info-panels{grid-template-columns:repeat(2,1fr);}
     .genre-note-panel{grid-template-columns:1fr;}
     .achievement-grid{grid-template-columns:repeat(2,1fr);}
+    .ig-grid{grid-template-columns:repeat(2,1fr);}
     .dual-panel{grid-template-columns:1fr;}
     .results-grid{grid-template-columns:1fr 1fr;}
     .results-grid > .result-card:last-child{grid-column:span 2;}
@@ -815,6 +834,7 @@
     .class-grid > .class-card:last-child{grid-column:auto;}
     .info-panels{grid-template-columns:1fr;}
     .achievement-grid{grid-template-columns:1fr;}
+    .ig-grid{grid-template-columns:1fr;}
     .results-grid{grid-template-columns:1fr;}
     .results-grid > .result-card:last-child{grid-column:auto;}
     .hero-ctas{flex-direction:column; align-items:flex-start;}
@@ -872,6 +892,7 @@
       <a href="#access">ACCESS</a>
       <a href="#rental">RENTAL</a>
       <a href="#sendai">SENDAI</a>
+      <a href="#instagram">INSTAGRAM</a>
     </nav>
     <div class="nav-right">
       <a href="https://www.instagram.com/nalstudio_tokyo" target="_blank" rel="noopener" class="nav-instagram" aria-label="Instagramを見る">
@@ -892,6 +913,7 @@
     <a href="#access">ACCESS</a>
     <a href="#rental">RENTAL</a>
     <a href="#sendai">SENDAI</a>
+    <a href="#instagram">INSTAGRAM</a>
     <a href="https://www.instagram.com/nalstudio_tokyo" target="_blank" rel="noopener" class="nav-instagram-mobile">
       <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.8"/>
@@ -1551,6 +1573,28 @@
     </div>
   </section>
 
+  <!-- ============ INSTAGRAM ============ -->
+  <section id="instagram">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <div class="sec-num mono">INSTAGRAM</div>
+          <h2 class="sec-title">最新の<span class="holo-text">投稿</span></h2>
+        </div>
+        <div class="sec-desc">スタジオの様子やレッスン風景を公式Instagramで更新中。最新の投稿をこちらでもチェックできます。</div>
+      </div>
+
+      <div class="ig-grid" id="ig-grid">
+        <!-- data/instagram-posts.json からJSで自動生成されます -->
+      </div>
+
+      <a href="https://www.instagram.com/nalstudio_tokyo" target="_blank" rel="noopener" class="btn-social" style="margin-top:32px;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1" fill="currentColor" stroke="none"/></svg>
+        Instagram @nalstudio_tokyo
+      </a>
+    </div>
+  </section>
+
   <!-- ============ CONTACT ============ -->
   <section class="contact" id="contact">
     <div class="hero-glow" style="top:0; right:20%;"></div>
@@ -1587,6 +1631,7 @@
         <a href="#access">ACCESS</a>
         <a href="#rental">RENTAL</a>
         <a href="#sendai">SENDAI</a>
+        <a href="#instagram">INSTAGRAM</a>
       </div>
     </div>
     <div class="foot-bottom mono">
@@ -1604,6 +1649,21 @@
   window.addEventListener('resize', function(){
     if (window.innerWidth > 860) navToggle.checked = false;
   });
+
+  fetch('data/instagram-posts.json')
+    .then(function(res){ return res.json(); })
+    .then(function(data){
+      var grid = document.getElementById('ig-grid');
+      if (!grid || !data.posts) return;
+      grid.innerHTML = data.posts.map(function(post){
+        var caption = (post.caption || '').replace(/"/g, '&quot;');
+        return '<a class="ig-card" href="' + post.permalink + '" target="_blank" rel="noopener">' +
+          '<img src="' + post.image + '" alt="' + (caption || 'Instagram post') + '" loading="lazy">' +
+          '<span class="ig-card-overlay"><span class="ig-card-caption">' + caption + '</span></span>' +
+        '</a>';
+      }).join('');
+    })
+    .catch(function(err){ console.error('Instagram posts load failed:', err); });
 </script>
 
 </body>
